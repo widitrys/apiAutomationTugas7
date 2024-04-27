@@ -1,2 +1,6 @@
-const baseUrlProd = 'https://api.restful-api.dev/' 
-module.exports = baseUrlProd;
+const baseUrlProd = 'https://thinking-tester-contact-list.herokuapp.com' 
+let token = ''
+module.exports = {
+    baseUrlProd,
+    token,
+}

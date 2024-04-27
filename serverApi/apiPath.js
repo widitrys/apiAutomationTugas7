@@ -1,27 +1,32 @@
 const supertest = require ('supertest');
 const baseUrlProd = require('../globalVariable/baseUrl');
 
-// path get List Object
-const getListObjects = () => supertest(baseUrlProd)
-      .get('/objects')
+// path add User
+const addUser = (body) => supertest(baseUrlProd)
+      .send('/users/' + body)
 
-// path get List Object by id
-const getListObjectsId = (id) => supertest(baseUrlProd)
-      .get('/objects/' + id)
+// path get User Profile
+const getUserProfile = () => supertest(baseUrlProd)
+      .set('Authorization', 'Bearer ') 
+      .get('/users/me')
 
-// path post add Object
-const addObject = (body) => supertest(baseUrlProd)
-      .post('/objects')
+// path add Contact
+const addContact = (body) => supertest(baseUrlProd)
+      .send('/contacts' + body)
+
+// path get Contact
+const getContact = (contactId) => supertest(baseUrlProd)
+      .set('Authorization', 'Bearer ')
+      .get('/contacts/' + contactId)
+
+// path update Contact
+const updateObject = (contactId, body) => supertest(baseUrlProd)
+      .put('/contacts/' + contactId)
       .send(body)
 
-// path put Object
-const updateObject = (id, body) => supertest(baseUrlProd)
-      .put('/objects/' + id)
-      .send(body)
-
-// path patch Object (updatePartial)
-const updateObjectPartial = (id, body) => supertest(baseUrlProd)
-      .patch('/objects/' + id)
+// path update Contact (updatePartial)
+const updateObjectPartial = (contactId, body) => supertest(baseUrlProd)
+      .patch('/contacts/' + contactId)
       .send(body)
 
 
@@ -31,10 +36,5 @@ const deleteObject = (id) => supertest(baseUrlProd)
 
 
 module.exports = {
-    getListObjects,
-    getListObjectsId,
-    addObject,
-    updateObject,
-    updateObjectPartial,
-    deleteObject,
+    
 }
