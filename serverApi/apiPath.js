@@ -21,20 +21,28 @@ const getContact = (contactId) => supertest(baseUrlProd)
 
 // path update Contact
 const updateObject = (contactId, body) => supertest(baseUrlProd)
+      .set('Authorization', 'Bearer ')
       .put('/contacts/' + contactId)
       .send(body)
 
 // path update Contact (updatePartial)
 const updateObjectPartial = (contactId, body) => supertest(baseUrlProd)
+      .set('Authorization', 'Bearer ')
       .patch('/contacts/' + contactId)
       .send(body)
 
-
 // path Delete Object
-const deleteObject = (id) => supertest(baseUrlProd)
-      .delete('/objects/' + id)
+const deleteContact = (contactId) => supertest(baseUrlProd)
+      .set('Authorization', 'Bearer ')
+      .delete('/contacts/' + contactId)
 
 
 module.exports = {
-    
+    addUser,
+    getUserProfile,
+    addContact,
+    getContact,
+    updateObject,
+    updateObjectPartial,
+    deleteContact,
 }
